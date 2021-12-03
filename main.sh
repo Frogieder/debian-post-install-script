@@ -19,6 +19,9 @@ confirm() {
 # add another path to PATH
 echo "\nPATH='/usr/sbin:$PATH'" >> .bashrc
 
+# install bash alliases
+cat ./.bash_alliases >> ~/.bash_alliases
+
 # add apt sources
 echo "Add contrib and non-free to your sources file"
 read -p "Press enter to open it"
@@ -28,7 +31,7 @@ wait
 
 # upgrade the distro and install some cool packages
 sudo apt update && sudo apt upgrade
-sudo apt install python3 kitty curl tree lutris aptitude gimp steam filezilla gparted  openjdk-17-jdk kicad vim minicom nano
+sudo apt install python3 kitty curl tree lutris aptitude gimp steam filezilla gparted  openjdk-17-jdk kicad vim minicom nano lmms
 
 # configure default editor
 sudo update-alternatives --config editor
@@ -75,6 +78,27 @@ echo "${GREEN}Installing MultiMC"
 wget -O multimc.deb https://files.multimc.org/downloads/multimc_1.6-1.deb
 sudo apt install ./multimc.deb
 rm -f multimc.deb
+
+# install Packet tracer 
+echo "${GREEN}Installing Packet Tracer"
+wget -O packetTracer.deb https://www.netacad.com/portal/resources/file/71b29477-0abb-4a52-97eb-cc23d5771574
+sudo apt install ./packetTracer.deb
+rm -f packetTracer.deb
+
+# download Cura and AppImage Launcher (require manual install, I suppose)
+echo "${GREEN}Installing AppImage Launcher"
+wget -O appimagelauncher.deb https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher_2.2.0-travis995.0f91801.bionic_amd64.deb
+sudo apt install appimagelauncher.deb
+wget -O Cura.Appimage https://software.ultimaker.com/cura/Ultimaker_Cura-4.12.1.AppImage
+
+# install TruckersMP from pip
+echo "${GREEN}Installing TruckersMP"
+python3 -m pip install --user truckersmp-cli
+
+# install Legendary
+echo "${GREEN}Installing Legendary"
+pip install legendary-gl
+
 
 installFusion() {
 	echo "${GREEN}Installing Autodesk Fusion 360"
