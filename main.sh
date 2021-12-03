@@ -26,11 +26,14 @@ read -p "Press enter to open it"
 sudo nano /etc/apt/sources.list
 wait
 
-#upgrade the distro and install some cool packages
+# upgrade the distro and install some cool packages
 sudo apt update && sudo apt upgrade
 sudo apt install python3 kitty curl tree lutris aptitude gimp steam filezilla gparted  openjdk-17-jdk kicad vim minicom nano
 
-#install vscode
+# configure default editor
+sudo update-alternatives --config editor
+
+# install vscode
 echo "${GREEN}Installing Visual studio code"
 wget -O "code.deb" https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
 sudo apt install ./code.deb
